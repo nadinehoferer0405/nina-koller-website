@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Embodied Woman – Nina Koller-Pargätzi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'TheSeasons';
+      src: url('Assets/Schriften/TheSeasons-Lt.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ─── RESET & BASE ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: #faf8f5;
+      color: #1a1714;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { display: block; width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── CSS VARIABLES ───────────────────────────────── */
+    :root {
+      --deep:       #131110;
+      --dark:       #1e1a17;
+      --mid:        #2e2820;
+      --gold:       #A48854;
+      --gold-light: #c4a97d;
+      --gold-pale:  #f0e8d8;
+      --cream:      #f5f0e8;
+      --warm-white: #faf8f5;
+      --text-dark:  #1a1714;
+      --text-mid:   #4a3f35;
+      --text-light: #8a7d72;
+      --pad:        max(48px, 8vw);
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────── */
+    .btn {
+      display: inline-block;
+      padding: 13px 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-light {
+      border: 1px solid rgba(255,255,255,0.6);
+      color: #fff;
+    }
+    .btn-light:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
+    .btn-gold { border: 1px solid var(--gold); color: var(--gold); }
+    .btn-gold:hover { background: var(--gold); color: var(--deep); }
+    .btn-dark { border: 1px solid var(--text-dark); color: var(--text-dark); }
+    .btn-dark:hover { background: var(--text-dark); color: var(--cream); }
+    .btn-cream { border: 1px solid var(--cream); color: var(--cream); }
+    .btn-cream:hover { background: var(--cream); color: var(--deep); }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 var(--pad);
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: visible;
+      transition: background 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(19, 17, 16, 0.96);
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      display: block;
+      height: 360px;
+      width: auto;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color 0.25s;
+    }
+    .nav-cta:hover { color: var(--gold); }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Assets/Bestehende Webseite/Embodied Woman _ Embodiment, Zyklus Coaching, Frauengesundheit und Weiblichkeit_files/733640_340e4333ec794942bf278e11f952ab67~mv2.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(13,11,10,0.82) 0%,
+        rgba(13,11,10,0.45) 35%,
+        rgba(13,11,10,0.12) 65%,
+        rgba(13,11,10,0.0) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 48px 100px var(--pad);
+      text-align: left;
+    }
+    .hero-eyebrow {
+      color: var(--gold-light);
+      margin-bottom: 28px;
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+    .hero-title {
+      font-family: 'TheSeasons', serif;
+      font-size: clamp(2.8rem, 6vw, 5.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: #fff;
+      letter-spacing: 0.01em;
+      margin-bottom: 28px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.72);
+      max-width: 460px;
+      line-height: 1.85;
+      margin-bottom: 44px;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 56px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%   { opacity: 1; transform: scaleY(1) translateY(0); }
+      100% { opacity: 0; transform: scaleY(0.3) translateY(20px); }
+    }
+
+    /* ─── STATEMENT STRIP ─────────────────────────────── */
+    .statement {
+      background: var(--dark);
+      padding: 80px var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 56px;
+    }
+    .statement-text { text-align: right; }
+    .statement-line {
+      width: 72px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .statement-text {
+      font-family: 'TheSeasons', serif;
+      font-size: clamp(1.3rem, 2.8vw, 2.1rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold-pale);
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── SEHNSUCHT ───────────────────────────────────── */
+    .sehnsucht {
+      background: var(--warm-white);
+      padding: 120px var(--pad);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .sehnsucht-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .sehnsucht-img img {
+      width: 100%;
+      height: 580px;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .sehnsucht-content {}
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .eyebrow-line {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .eyebrow-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .section-title {
+      font-family: 'TheSeasons', serif;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 28px;
+    }
+    .section-title em { font-style: italic; }
+    .body-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+    .body-text + .body-text { margin-bottom: 36px; }
+
+    /* ─── ANGEBOTE ────────────────────────────────────── */
+    .angebote {
+      background: var(--cream);
+      padding: 120px var(--pad);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .section-label {
+      color: var(--gold);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .angebote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1441px;
+      margin: 0 auto;
+    }
+    .angebot-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+      aspect-ratio: 479/683;
+      cursor: pointer;
+    }
+    .angebot-card-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.8s ease, filter 0.5s ease;
+      filter: brightness(0.82);
+    }
+    .angebot-card:hover .angebot-card-img {
+      transform: scale(1.05);
+      filter: brightness(0.52);
+    }
+    .angebot-card-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px 32px 36px;
+      background: linear-gradient(to top,
+        rgba(13,11,10,0.88) 0%,
+        rgba(13,11,10,0.28) 38%,
+        transparent 60%
+      );
+      transition: background 0.5s ease;
+    }
+    .angebot-card:hover .angebot-card-content {
+      background: linear-gradient(to top,
+        rgba(13,11,10,0.92) 0%,
+        rgba(13,11,10,0.5) 50%,
+        rgba(13,11,10,0.08) 75%
+      );
+    }
+    .angebot-tag {
+      font-size: 0.6rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 8px;
+      opacity: 0.9;
+    }
+    .angebot-title {
+      font-family: 'TheSeasons', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .angebot-title em { font-style: italic; }
+    .angebot-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.75;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease, opacity 0.35s ease, margin 0.35s ease;
+      margin-top: 0;
+    }
+    .angebot-card:hover .angebot-desc {
+      max-height: 130px;
+      opacity: 1;
+      margin-top: 14px;
+    }
+    .angebot-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-top: 20px;
+      transition: gap 0.25s;
+    }
+    .angebot-link::after { content: '→'; font-size: 1rem; transition: transform 0.25s; }
+    .angebot-card:hover .angebot-link { gap: 16px; }
+    .angebot-card:hover .angebot-link::after { transform: translateX(4px); }
+
+    /* ─── VERKÖRPERUNG ────────────────────────────────── */
+    .verkoerperung {
+      background: var(--dark);
+      padding: 220px var(--pad);
+      position: relative;
+      overflow: hidden;
+    }
+    .verkoerperung-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Assets/Bestehende Webseite/Embodied Woman _ Embodiment, Zyklus Coaching, Frauengesundheit und Weiblichkeit_files/733640_1b824788998248b79dea5e67cd5b5542~mv2.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.13;
+      pointer-events: none;
+    }
+    .verkoerperung-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    .verkoerperung-left .section-title,
+    .verkoerperung-left .body-text { color: #fff; }
+    .verkoerperung-left .body-text { color: rgba(255,255,255,0.75); }
+    .verkoerperung-left .eyebrow-text { color: var(--gold); }
+    .verkoerperung-right {
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .verk-item {
+      border-left: 1px solid rgba(196,169,125,0.3);
+      padding-left: 24px;
+    }
+    .verk-item-title {
+      font-family: 'TheSeasons', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .verk-item-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ─── DER WEG ─────────────────────────────────────── */
+    .der-weg {
+      background: var(--cream);
+      padding: 100px var(--pad);
+      text-align: center;
+    }
+    .weg-phasen {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+    .weg-phase {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      padding: 32px 36px;
+      flex: 1;
+      min-width: 140px;
+      position: relative;
+    }
+    .weg-phase:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 48px;
+      background: var(--gold-light);
+      opacity: 0.4;
+    }
+    .weg-nr {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .weg-name {
+      font-family: 'TheSeasons', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--text-dark);
+    }
+    .weg-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.6;
+      max-width: 140px;
+      text-align: center;
+    }
+
+    /* ─── VIDEO BREAK ────────────────────────────────── */
+    .video-break {
+      position: relative;
+      height: 65vh;
+      min-height: 400px;
+      overflow: hidden;
+    }
+    .video-break video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 50%;
+      transform: scale(1.4);
+      filter: brightness(0.62) saturate(0.78) sepia(0.28) hue-rotate(-8deg);
+    }
+    .video-break-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(19,17,14,0.25) 0%,
+        rgba(19,17,14,0.05) 35%,
+        rgba(19,17,14,0.05) 65%,
+        rgba(19,17,14,0.35) 100%
+      );
+    }
+    .video-break-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      text-align: center;
+      padding: 0 var(--pad);
+    }
+    .video-break-quote {
+      font-family: 'TheSeasons', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      font-style: normal;
+      color: #fff;
+      line-height: 1.25;
+      max-width: 900px;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .video-break-quote em {
+      font-style: italic;
+      font-weight: 300;
+      display: block;
+    }
+    .video-break-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold-light);
+      opacity: 0.6;
+    }
+    .video-break-credit {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ─── GRUNDSÄTZE ──────────────────────────────────── */
+    .grundsaetze {
+      background: var(--warm-white);
+      padding: 120px var(--pad);
+    }
+    .grundsaetze-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 64px auto 0;
+    }
+    .gs-card {
+      background: #fff;
+      border: 1px solid var(--gold-pale);
+      padding: 52px 44px 48px;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .gs-card:hover {
+      box-shadow: 0 12px 48px rgba(196,169,125,0.12);
+      transform: translateY(-4px);
+    }
+    .gs-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+    }
+    .gs-roman {
+      font-family: 'TheSeasons', serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: block;
+    }
+    .gs-principle {
+      font-family: 'TheSeasons', serif;
+      font-size: 1.65rem;
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .gs-principle em {
+      font-style: italic;
+      display: block;
+      color: var(--gold);
+    }
+    .gs-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--gold-pale);
+      margin: 20px 0;
+    }
+    .gs-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-dark);
+    }
+    .gs-bg-nr {
+      position: absolute;
+      bottom: -20px;
+      right: 24px;
+      font-family: 'TheSeasons', serif;
+      font-size: 8rem;
+      font-weight: 300;
+      color: rgba(196,169,125,0.06);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ─── ÜBER NINA ───────────────────────────────────── */
+    .ueber {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+    .ueber-image {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+      padding-left: var(--pad);
+    }
+    .ueber-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.7s ease;
+    }
+    .ueber-image:hover img { transform: scale(1.04); }
+    .ueber-image-caption {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      right: 32px;
+      font-family: 'TheSeasons', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+    .ueber-content {
+      background: var(--cream);
+      padding: 80px clamp(48px, 7vw, 96px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .ueber-roles {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 36px;
+    }
+    .ueber-role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .ueber-values {
+      display: flex;
+      gap: 0;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+    .ueber-value {
+      font-family: 'TheSeasons', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text-mid);
+      padding: 0 18px;
+      border-right: 1px solid var(--gold-pale);
+    }
+    .ueber-value:first-child { padding-left: 0; }
+    .ueber-value:last-child { border-right: none; }
+
+    /* ─── RÄUME ───────────────────────────────────────── */
+    .raeume {
+      background: var(--dark);
+      padding: 120px var(--pad);
+    }
+    .raeume-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      max-width: 1200px;
+      margin: 64px auto 0;
+      background: rgba(196,169,125,0.15);
+    }
+    .raum-item {
+      background: var(--dark);
+      padding: 40px 48px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .raum-item:hover { background: var(--mid); }
+    .raum-nr {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .raum-title {
+      font-family: 'TheSeasons', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .raum-title em { font-style: italic; }
+    .raum-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(240,232,216,0.5);
+      margin-bottom: 28px;
+    }
+    .raum-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: gap 0.25s;
+    }
+    .raum-link::after { content: '→'; }
+    .raum-item:hover .raum-link { gap: 16px; }
+
+    /* ─── CTA ─────────────────────────────────────────── */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+      padding: 140px var(--pad);
+      background: var(--deep);
+      text-align: center;
+    }
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('Assets/Bestehende Webseite/Embodied Woman _ Embodiment, Zyklus Coaching, Frauengesundheit und Weiblichkeit_files/733640_1b824788998248b79dea5e67cd5b5542~mv2.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+    }
+    .cta-content { position: relative; z-index: 2; }
+    .cta-title {
+      font-family: 'TheSeasons', serif;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.25;
+      margin: 16px 0 20px;
+    }
+    .cta-title em { font-style: italic; color: var(--gold-light); }
+    .cta-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+      line-height: 1.85;
+      max-width: 520px;
+      margin: 0 auto 48px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── NEWSLETTER ──────────────────────────────────── */
+    .newsletter {
+      background: var(--gold-pale);
+      padding: 100px var(--pad);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 100%;
+    }
+    .newsletter-title {
+      font-family: 'TheSeasons', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .newsletter-title em { font-style: italic; }
+    .newsletter-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-dark);
+    }
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .newsletter-form input {
+      background: #fff;
+      border: 1px solid rgba(196,169,125,0.3);
+      padding: 14px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .newsletter-form input:focus { border-color: var(--gold); }
+    .newsletter-form input::placeholder { color: var(--text-light); }
+    .newsletter-form button {
+      padding: 14px 32px;
+      background: var(--text-dark);
+      color: var(--cream);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+      align-self: flex-start;
+    }
+    .newsletter-form button:hover { background: var(--mid); }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--deep);
+      border-top: 1px solid rgba(196,169,125,0.12);
+      padding: 64px var(--pad) 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 56px;
+    }
+    .footer-brand-name {
+      font-family: 'TheSeasons', serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .footer-brand-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.8;
+      max-width: 240px;
+    }
+    .footer-col-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.04em;
+      transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-copy {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.18);
+      letter-spacing: 0.06em;
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .footer-social a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      transition: color 0.25s;
+    }
+    .footer-social a:hover { color: var(--gold-light); }
+
+    /* ─── FADE-IN ─────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#">
+      <img class="nav-logo" src="Assets/Logo/weiß Sublogo_Nina Koller Pargätzi.png" alt="Embodied Woman" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Embodiment</a></li>
+      <li><a href="#">Angebote</a></li>
+      <li><a href="#">Podcast</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Gespräch buchen</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Embodied Woman · Nina Koller-Pargätzi</div>
+      <h1 class="hero-title">
+        Fall in love<br />
+        with yourself &amp;<br />
+        <em>let Life turn you on.</em>
+      </h1>
+      <p class="hero-sub">
+        Verkörperung, in der Lust zur Lebensenergie wird.
+      </p>
+      <a href="#angebote" class="btn btn-light">Entdecke deine Reise</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <div class="statement">
+    <div class="statement-line"></div>
+    <p class="statement-text">
+      Mehr Weiblichkeit. Mehr Sinnlichkeit. Mehr Lust.
+    </p>
+  </div>
+
+  <!-- SEHNSUCHT -->
+  <section class="sehnsucht" style="grid-template-columns:1fr 1fr;max-width:none;padding:160px max(80px,20vw);gap:120px;">
+    <div class="sehnsucht-content fade-up">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Eine Einladung</span>
+      </div>
+      <h2 class="section-title">
+        Eine Sehnsucht nach<br />
+        <em>Tiefe. Weichheit. Lebendigkeit.</em>
+      </h2>
+      <p class="body-text" style="text-align:justify;hyphens:auto">
+        Embodied Woman begleitet Frauen in die Verkörperung ihrer Weiblichkeit und öffnet Räume für Embodiment, feminine Energie und lebendige Präsenz.
+      </p>
+      <p class="body-text" style="text-align:justify;hyphens:auto">
+        Ich begleite Frauen, die viel erreicht haben, sich jedoch im eigenen Körper fremd geworden sind und eine tiefe Sehnsucht nach mehr Lebendigkeit, Lust und Identität in sich tragen.
+      </p>
+      <p class="body-text" style="text-align:justify;hyphens:auto">
+        Embodied Woman ist ein Raum für Frauen in der Schweiz, die ihre Weiblichkeit bewusst leben und wieder tiefer in ihren Körper finden möchten. Frauengesundheit wird holistisch betrachtet. Durch Embodiment für Frauen entsteht eine neue Verbindung zu Präsenz, Energie und innerer Führung.
+      </p>
+    </div>
+    <div class="sehnsucht-content fade-up">
+      <p class="body-text" style="text-align:justify;hyphens:auto">
+        Viele Frauen spüren den Wunsch nach mehr Körperbewusstsein, nach lebendiger Weiblichkeit und nach einer Form von Verkörperung, die Lust, Klarheit und natürliche Autorität miteinander verbindet. In Retreats, Sessions und gemeinsamen Räumen entsteht ein Weg zurück in den eigenen Körper und in eine Form von Weiblichkeit, die sich lebendig, geerdet und kraftvoll anfühlt.
+      </p>
+      <p class="body-text" style="text-align:justify;hyphens:auto">
+        Es gibt einen Moment im Leben einer Frau, in dem sie erkennt, dass Erfolg allein sie nicht erfüllt. Sie trägt Verantwortung, gestaltet bewusst, entscheidet klar und dennoch lebt in ihr eine leise Distanz. Ihr Körper wirkt funktional, ihr Denken präzise, ihr Alltag strukturiert. Und unter dieser Oberfläche pulsiert eine Sehnsucht.
+      </p>
+      <p style="font-family:'TheSeasons',serif;font-size:clamp(0.82rem,1.15vw,1rem);font-weight:300;font-style:italic;color:var(--gold);margin-bottom:16px;line-height:2;white-space:nowrap;">
+        Eine Sehnsucht nach Tiefe. &nbsp;·&nbsp; Nach Weichheit. &nbsp;·&nbsp; Nach Lebendigkeit.
+      </p>
+      <p class="body-text" style="margin-bottom:36px;text-align:justify;hyphens:auto">
+        Diese Sehnsucht ist Erinnerung. Eine Erinnerung daran, dass Weiblichkeit verkörpert wird – nicht gedacht, nicht erklärt, sondern gelebt.
+      </p>
+      <a href="#" class="btn btn-dark">Erfahre mehr über mich</a>
+    </div>
+  </section>
+
+  <!-- ANGEBOTE -->
+  <section class="angebote" id="angebote">
+    <div class="section-header">
+      <div class="section-label">Deine Reise</div>
+      <h2 class="section-title" style="font-size:clamp(2rem,4vw,3.2rem)">
+        Drei Wege zurück <em>zu dir selbst</em>
+      </h2>
+    </div>
+    <div class="angebote-grid">
+
+      <div class="angebot-card">
+        <div class="angebot-card-img" style="background-image:url('Assets/Bestehende Webseite/Embodied Woman _ Embodiment, Zyklus Coaching, Frauengesundheit und Weiblichkeit_files/_DSC6617.jpg')"></div>
+        <div class="angebot-card-content">
+          <div class="angebot-tag">Einzelsessions · Online &amp; Präsenz</div>
+          <h3 class="angebot-title">EmbodyHer<br /><em>Deep Dive Sessions</em></h3>
+          <p class="angebot-desc">Konzentrierte Momente der Klarheit und Verkörperung. 60 oder 90-minütige Einzelsessions – für Frauen, die spüren wollen statt funktionieren.</p>
+          <a href="#" class="angebot-link">Mehr erfahren</a>
+        </div>
+      </div>
+
+      <div class="angebot-card">
+        <div class="angebot-card-img" style="background-image:url('Assets/Bestehende Webseite/Embodied Woman _ Embodiment, Zyklus Coaching, Frauengesundheit und Weiblichkeit_files/733640_340e4333ec794942bf278e11f952ab67~mv2.jpg')"></div>
+        <div class="angebot-card-content">
+          <div class="angebot-tag">Retreat · 2.5 Tage · CHF 1'320</div>
+          <h3 class="angebot-title">FEMM<br /><em>Female Energy, Moon &amp; Magic</em></h3>
+          <p class="angebot-desc">Schwellen in der Natur – in der Einfachheit liegt hier der Luxus. 2.5 intensive Tage in weiblicher Gemeinschaft, Körperarbeit und heiliger Magie.</p>
+          <a href="#" class="angebot-link">Mehr erfahren</a>
+        </div>
+      </div>
+
+      <div class="angebot-card">
+        <div class="angebot-card-img" style="background-image:url('Assets/Bestehende Webseite/Embodied Woman _ Embodiment, Zyklus Coaching, Frauengesundheit und Weiblichkeit_files/733640_9a7c38e8eb114e3fa19e40d214c45a3e~mv2.jpg')"></div>
+        <div class="angebot-card-content">
+          <div class="angebot-tag">Signature Programm · 6 Monate · CHF 4'800</div>
+          <h3 class="angebot-title">The Initiation<br /><em>into Her Essence</em></h3>
+          <p class="angebot-desc">Eine Reise in verkörperte Weiblichkeit. 6 Monate 1:1 – von funktionierend und entfremdet zu verkörpert, magnetisch und lustvoll präsent.</p>
+          <a href="#" class="angebot-link">Mehr erfahren</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VERKÖRPERUNG -->
+  <section class="verkoerperung">
+    <div class="verkoerperung-bg"></div>
+    <div class="verkoerperung-inner">
+      <div class="verkoerperung-left fade-up">
+        <div class="eyebrow">
+          <div class="eyebrow-line" style="background:var(--gold)"></div>
+          <span class="eyebrow-text">Embodiment</span>
+        </div>
+        <h2 class="section-title" style="color:#fff;font-weight:300">
+          Verkörperung beginnt,<br />
+          <em>wenn eine Frau sich bewohnt.</em>
+        </h2>
+        <p class="body-text" style="color:rgba(255,255,255,0.75);margin-bottom:36px">
+          Wenn Atem tiefer wird, Bewegungen weicher werden und Lust zur Quelle wird. Der Weg zurück in den Körper folgt einer natürlichen Ordnung.
+        </p>
+        <a href="#" class="btn btn-gold">Erfahre mehr</a>
+      </div>
+      <div class="verkoerperung-right fade-up">
+        <div class="verk-item">
+          <div class="verk-item-title">Lust ist Lebensenergie.</div>
+          <p class="verk-item-text">Sie durchzieht Kreativität, Beziehung, Führung und Alltag. Nicht als Nebensache, sondern als Fundament.</p>
+        </div>
+        <div class="verk-item">
+          <div class="verk-item-title">Somatische Körperarbeit.</div>
+          <p class="verk-item-text">Meine Arbeit verbindet VITA™-Methode, zyklisches Wissen und initiierende Räume zu einer gelebten Transformation.</p>
+        </div>
+        <div class="verk-item">
+          <div class="verk-item-title">Magnetische Präsenz.</div>
+          <p class="verk-item-text">Verkörperung erzeugt Magnetismus. Eine Frau, die in ihrem Körper wohnt, verändert jeden Raum, den sie betritt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DER WEG -->
+  <section class="der-weg">
+    <div class="eyebrow" style="justify-content:center">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Der Signature Coaching Path</span>
+      <div class="eyebrow-line"></div>
+    </div>
+    <h2 class="section-title" style="margin-top:12px">
+      Der Weg zurück in den Körper<br />
+      <em>folgt einer natürlichen Ordnung.</em>
+    </h2>
+    <div class="weg-phasen fade-up">
+      <div class="weg-phase">
+        <span class="weg-nr">01</span>
+        <span class="weg-name">Regulation</span>
+        <span class="weg-desc">Sicherheit im Nervensystem. Ankommen im Körper.</span>
+      </div>
+      <div class="weg-phase">
+        <span class="weg-nr">02</span>
+        <span class="weg-name">Verbindung</span>
+        <span class="weg-desc">Beziehung zum Körper. Rhythmus. Zyklus. Wahrnehmung.</span>
+      </div>
+      <div class="weg-phase">
+        <span class="weg-nr">03</span>
+        <span class="weg-name">Aktivierung</span>
+        <span class="weg-desc">Lust als Lebensenergie. Sinnlichkeit. Präsenz.</span>
+      </div>
+      <div class="weg-phase">
+        <span class="weg-nr">04</span>
+        <span class="weg-name">Initiation</span>
+        <span class="weg-desc">Identitätssprung. Entscheidungen. Selbstführung.</span>
+      </div>
+      <div class="weg-phase">
+        <span class="weg-nr">05</span>
+        <span class="weg-name">Integration</span>
+        <span class="weg-desc">Verkörperung in Beziehung, Sexualität, Business, Alltag.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO BREAK -->
+  <div class="video-break">
+    <video autoplay muted loop playsinline>
+      <source src="Assets/Videos/1678604_Air_Terjun_Waterfall_3840x2160.mp4" type="video/mp4" />
+    </video>
+    <div class="video-break-overlay"></div>
+    <div class="video-break-text">
+      <div class="video-break-line"></div>
+      <p class="video-break-quote">
+        Die Natur erinnert uns daran,<br />
+        <em>was wir schon immer gewusst haben.</em>
+      </p>
+      <div class="video-break-line"></div>
+    </div>
+  </div>
+
+  <!-- MEINE GRUNDSÄTZE -->
+  <section class="grundsaetze">
+    <div class="section-header">
+      <div class="section-label">Philosophie</div>
+      <h2 class="section-title" style="font-size:clamp(2rem,4vw,3.2rem)">
+        Meine <em>Grundsätze</em>
+      </h2>
+    </div>
+    <div class="grundsaetze-grid">
+
+      <div class="gs-card fade-up">
+        <span class="gs-roman">I</span>
+        <h3 class="gs-principle">
+          Lust ist keine Nebensache.
+          <em>Sie ist Lebensenergie.</em>
+        </h3>
+        <div class="gs-divider"></div>
+        <p class="gs-text">
+          Lust durchzieht Kreativität, Beziehung, Führung und Alltag. Sie ist nicht Belohnung am Ende des Tages – sie ist der Stoff, aus dem ein lebendiges Leben gemacht ist.
+        </p>
+        <span class="gs-bg-nr">I</span>
+      </div>
+
+      <div class="gs-card fade-up">
+        <span class="gs-roman">II</span>
+        <h3 class="gs-principle">
+          Verkörperung ist kein Luxus.
+          <em>Sie ist Voraussetzung.</em>
+        </h3>
+        <div class="gs-divider"></div>
+        <p class="gs-text">
+          Echte Präsenz entsteht nicht im Kopf. Sie entsteht im Körper. Wer sich bewohnt, wer Atem und Bewegung als Sprache kennt – die ist anwesend. Wirklich anwesend.
+        </p>
+        <span class="gs-bg-nr">II</span>
+      </div>
+
+      <div class="gs-card fade-up">
+        <span class="gs-roman">III</span>
+        <h3 class="gs-principle">
+          Weiblichkeit ist keine Rolle.
+          <em>Sie ist Kraft.</em>
+        </h3>
+        <div class="gs-divider"></div>
+        <p class="gs-text">
+          Weiblichkeit ist nicht Sanftheit gegen Stärke. Sie ist beides zugleich – und noch viel mehr. Wenn eine Frau ihre Weiblichkeit verkörpert, verändert sie jeden Raum, den sie betritt.
+        </p>
+        <span class="gs-bg-nr">III</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ÜBER NINA -->
+  <section class="ueber">
+    <div class="ueber-image">
+      <img
+        src="Assets/Bestehende Webseite/Embodied Woman _ Embodiment, Zyklus Coaching, Frauengesundheit und Weiblichkeit_files/_DSC6617.jpg"
+        alt="Nina Koller-Pargätzi"
+      />
+      <div class="ueber-image-caption">
+        „Ich stehe für verkörperte,<br />inspirierende Sinnlichkeit."
+      </div>
+    </div>
+    <div class="ueber-content">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Nina Koller-Pargätzi</span>
+      </div>
+      <h2 class="section-title">
+        Holistic Female Coach<br />
+        <em>Zyklus · Love · Sex &amp; Relationship</em>
+      </h2>
+      <div class="ueber-roles">
+        <span class="ueber-role">Embodiment Therapist</span>
+        <span class="ueber-role">Zyklus, Love, Sex &amp; Relationship Mentorin</span>
+        <span class="ueber-role">VITA™-Coach</span>
+      </div>
+      <p class="body-text" style="margin-bottom:36px">
+        Ich kenne das Leben zwischen Leistung und innerer Distanz. Die Rückkehr in meinen Körper veränderte meine Identität grundlegend.
+      </p>
+      <div class="ueber-values">
+        <span class="ueber-value">Verkörperung</span>
+        <span class="ueber-value">Sinnlichkeit</span>
+        <span class="ueber-value">Initiation</span>
+      </div>
+      <a href="#" class="btn btn-dark" style="margin-top:32px">Erfahre mehr über mich</a>
+    </div>
+  </section>
+
+  <!-- RÄUME DER ERINNERUNG -->
+  <section class="raeume">
+    <div class="section-header">
+      <div class="section-label" style="color:var(--gold)">Alle Angebote</div>
+      <h2 class="section-title" style="color:var(--gold-pale);font-size:clamp(2rem,4vw,3.2rem)">
+        Räume der <em>Erinnerung</em>
+      </h2>
+    </div>
+    <div class="raeume-grid fade-up">
+      <div class="raum-item">
+        <div class="raum-nr">01</div>
+        <h3 class="raum-title">FEMM <em>Retreats</em></h3>
+        <p class="raum-text">2.5 Tage Female Energy, Moon &amp; Magic. Schwellen in der Natur.</p>
+        <a href="#" class="raum-link">Platz buchen</a>
+      </div>
+      <div class="raum-item">
+        <div class="raum-nr">02</div>
+        <h3 class="raum-title">EmbodyHer <em>Deep Dives</em></h3>
+        <p class="raum-text">Einzelsessions online oder Präsenz. CHF 180 / 60 Min.</p>
+        <a href="#" class="raum-link">Session buchen</a>
+      </div>
+      <div class="raum-item">
+        <div class="raum-nr">03</div>
+        <h3 class="raum-title">Embodied Woman <em>Circle</em></h3>
+        <p class="raum-text">Monatlicher Online-Raum. Einstieg in meine Welt.</p>
+        <a href="#" class="raum-link">Mehr erfahren</a>
+      </div>
+      <div class="raum-item">
+        <div class="raum-nr">04</div>
+        <h3 class="raum-title">The Remembering<br /><em>Private Immersion</em></h3>
+        <p class="raum-text">5–7 Tage. Tessin. Heilung. Schwelle. Krönung.</p>
+        <a href="#" class="raum-link">Anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-bg"></div>
+    <div class="cta-content">
+      <div class="eyebrow" style="justify-content:center;margin-bottom:0">
+        <div class="eyebrow-line" style="background:var(--gold)"></div>
+        <span class="eyebrow-text" style="color:var(--gold)">Der erste Schritt</span>
+        <div class="eyebrow-line" style="background:var(--gold)"></div>
+      </div>
+      <h2 class="cta-title">
+        Wenn dich diese Worte berühren –<br />
+        <em>dann beginnt dein nächster Schritt hier.</em>
+      </h2>
+      <p class="cta-sub" style="margin-bottom:48px">
+        Wenn du die Sehnsucht kennst, die zwischen Struktur und Lebendigkeit lebt, dann beginnt dein nächster Schritt mit einem persönlichen Gespräch.
+      </p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-light">Gespräch buchen</a>
+        <a href="#" class="btn btn-gold">Alle Angebote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="fade-up">
+      <div class="eyebrow" style="margin-bottom:20px">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Newsletter</span>
+      </div>
+      <h2 class="newsletter-title">
+        Embodied Love<br />
+        <em>&amp; Body Stories</em>
+      </h2>
+      <p class="newsletter-sub">
+        Echte Geschichten über Körper, Lust, Verantwortung und das Erinnern. Manchmal meine. Manchmal deine. Immer ehrlich.
+      </p>
+    </div>
+    <div class="fade-up">
+      <form class="newsletter-form" onsubmit="return false">
+        <input type="text" placeholder="Dein Vorname" />
+        <input type="email" placeholder="Deine E-Mail-Adresse" />
+        <button type="submit">Anmelden</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">Embodied Woman</div>
+        <p class="footer-brand-sub">
+          Nina Koller-Pargätzi · Holistic Female Coach<br />
+          Zyklus, Love, Sex &amp; Relationship<br /><br />
+          Remember your Essence.<br />
+          Erinnere dich an deine Essenz.
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Angebote</div>
+        <ul class="footer-links">
+          <li><a href="#">EmbodyHer Sessions</a></li>
+          <li><a href="#">FEMM Retreat</a></li>
+          <li><a href="#">The Initiation</a></li>
+          <li><a href="#">The Remembering</a></li>
+          <li><a href="#">Embodied Woman Circle</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#">Über mich</a></li>
+          <li><a href="#">Embodiment</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Podcast</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Rechtliches</div>
+        <ul class="footer-links">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Podcast</a></li>
+          <li><a href="#">AGB</a></li>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Nina Koller-Pargätzi · Embodied Woman · Alle Rechte vorbehalten</span>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <span style="color:rgba(255,255,255,0.18)">·</span>
+        <a href="#">Podcast</a>
+        <span style="color:rgba(255,255,255,0.18)">·</span>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hero load animation
+    document.getElementById('heroBg').classList.add('loaded');
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
