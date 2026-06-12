@@ -997,6 +997,247 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── MOBILE NAV ──────────────────────────────────── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      z-index: 300;
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: #fff;
+      transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), opacity 0.25s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--deep);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px 60px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      display: flex;
+    }
+    .nav-mobile-menu.open { opacity: 1; pointer-events: all; }
+
+    .nav-mobile-menu ul {
+      list-style: none;
+      width: 100%;
+      max-width: 320px;
+      margin-bottom: 52px;
+    }
+    .nav-mobile-menu ul li {
+      border-bottom: 1px solid rgba(196,169,125,0.12);
+      overflow: hidden;
+    }
+    .nav-mobile-menu ul li:first-child { border-top: 1px solid rgba(196,169,125,0.12); }
+    .nav-mobile-menu ul a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      font-family: 'TheSeasons', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.82);
+      letter-spacing: 0.02em;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .nav-mobile-menu ul a::after {
+      content: '→';
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-size: 0.9rem;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-mobile-menu ul a:hover { color: var(--gold-light); padding-left: 6px; }
+    .nav-mobile-menu ul a:hover::after { opacity: 1; transform: translateX(0); }
+
+    .nav-mobile-cta-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border-bottom: 1px solid rgba(196,169,125,0.5);
+      padding-bottom: 4px;
+    }
+    .nav-mobile-gold {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.35;
+      margin: 44px auto 0;
+    }
+
+    /* ─── TABLET (≤1024px) ────────────────────────────── */
+    @media (max-width: 1024px) {
+      .angebote-grid { grid-template-columns: 1fr 1fr; }
+      .grundsaetze-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .verkoerperung-inner { gap: 60px; }
+      .newsletter { gap: 56px; }
+    }
+
+    /* ─── MOBILE (≤768px) ─────────────────────────────── */
+    @media (max-width: 768px) {
+      :root { --pad: 24px; }
+
+      /* Kein Blocksatz auf Mobilgeräten */
+      .body-text { text-align: left; }
+
+      /* NAV */
+      nav {
+        height: 68px;
+        padding: 0 20px;
+        background: rgba(19,17,16,0.92);
+        backdrop-filter: blur(12px);
+      }
+      .nav-logo { height: 200px; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* HERO */
+      .hero { min-height: 100svh; align-items: flex-end; }
+      .hero-bg { background-position: center 20%; }
+      .hero-content { padding: 0 20px 68px; }
+      .hero-eyebrow { font-size: 0.58rem; letter-spacing: 0.28em; margin-bottom: 20px; }
+      .hero-title { font-size: clamp(2.4rem, 9vw, 3.8rem); margin-bottom: 20px; }
+      .hero-sub { font-size: 0.83rem; max-width: 100%; margin-bottom: 32px; }
+      .hero-scroll { display: none; }
+
+      /* STATEMENT */
+      .statement {
+        padding: 24px 20px;
+        justify-content: flex-start;
+        gap: 18px;
+      }
+      .statement-line { width: 28px; flex-shrink: 0; }
+      .statement-text { font-size: clamp(1rem, 4vw, 1.4rem); text-align: left; line-height: 1.5; }
+
+      /* SEHNSUCHT — override inline style */
+      .sehnsucht {
+        grid-template-columns: 1fr !important;
+        padding: 72px 20px !important;
+        gap: 40px !important;
+        max-width: 100% !important;
+      }
+      .sehnsucht-img img { height: 300px; }
+      .section-title { font-size: clamp(1.65rem, 6.5vw, 2.4rem); }
+
+      /* ANGEBOTE */
+      .angebote { padding: 72px 0 80px; }
+      .section-header { padding: 0 20px; margin-bottom: 36px; }
+      .angebote-grid { grid-template-columns: 1fr; gap: 2px; max-width: 100%; }
+      .angebot-card { aspect-ratio: auto; min-height: 320px; }
+      .angebot-card-img { position: absolute; inset: 0; }
+      .angebot-card-content { padding: 20px 20px 28px; }
+      .angebot-title { font-size: 1.35rem; }
+      .angebot-desc { font-size: 0.8rem; }
+
+      /* VERKÖRPERUNG */
+      .verkoerperung { padding: 72px 20px; }
+      .verkoerperung-inner { grid-template-columns: 1fr; gap: 48px; max-width: 100%; }
+      .verk-item-title { font-size: 1.35rem; }
+      .verk-item-text { font-size: 0.88rem; }
+
+      /* DER WEG */
+      .der-weg { padding: 72px 20px; }
+      .weg-phasen {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        margin-top: 40px;
+      }
+      .weg-phase {
+        padding: 24px 0;
+        align-items: flex-start;
+        text-align: left;
+        border-bottom: 1px solid rgba(196,169,125,0.15);
+        flex-direction: row;
+        gap: 20px;
+        flex: none;
+      }
+      .weg-phase:last-child { border-bottom: none; }
+      .weg-phase:not(:last-child)::after { display: none; }
+      .weg-nr { flex-shrink: 0; margin-top: 4px; }
+      .weg-desc { text-align: left; max-width: 100%; font-size: 0.85rem; }
+      .weg-name { font-size: 1.1rem; }
+
+      /* VIDEO BREAK */
+      .video-break { height: 60vh; min-height: 300px; }
+      .video-break-quote { font-size: clamp(1.4rem, 5.5vw, 2rem); max-width: 90vw; }
+      .video-break-credit { font-size: 0.58rem; }
+
+      /* GRUNDSÄTZE */
+      .grundsaetze { padding: 72px 20px; }
+      .grundsaetze-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 40px; }
+      .gs-card { padding: 36px 28px 32px; }
+      .gs-principle { font-size: 1.35rem; }
+
+      /* ÜBER NINA */
+      .ueber { grid-template-columns: 1fr; min-height: auto; }
+      .ueber-image { height: 420px; padding-left: 0; }
+      .ueber-image-caption { font-size: 0.9rem; }
+      .ueber-content { padding: 56px 20px; }
+
+      /* RÄUME */
+      .raeume { padding: 72px 20px; }
+      .raeume-grid { grid-template-columns: 1fr; margin-top: 40px; }
+      .raum-item { padding: 28px 24px; }
+      .raum-title { font-size: 1.3rem; }
+      .raum-text { font-size: 0.85rem; }
+      /* Intro-Texte in Räume */
+      .raeume .section-header p.body-text {
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      /* CTA */
+      .cta-section { padding: 88px 20px; }
+      .cta-title { font-size: clamp(1.7rem, 6.5vw, 2.6rem); }
+      .cta-sub { font-size: 0.83rem; max-width: 100%; text-align: left; }
+      .cta-buttons { flex-direction: column; align-items: stretch; gap: 12px; }
+      .cta-buttons .btn { text-align: center; }
+
+      /* NEWSLETTER */
+      .newsletter { grid-template-columns: 1fr; padding: 72px 20px; gap: 44px; }
+      .newsletter-form button { align-self: stretch; text-align: center; }
+
+      /* FOOTER */
+      footer { padding: 52px 20px 28px; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+      .footer-brand-sub { max-width: 100%; }
+      .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+      .footer-copy { font-size: 0.62rem; }
+    }
   </style>
 </head>
 <body>
@@ -1013,7 +1254,22 @@
       <li><a href="#">About</a></li>
     </ul>
     <a href="#" class="nav-cta">Gespräch buchen</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#" onclick="closeMenu()">Embodiment</a></li>
+      <li><a href="#" onclick="closeMenu()">Angebote</a></li>
+      <li><a href="#" onclick="closeMenu()">Podcast</a></li>
+      <li><a href="#" onclick="closeMenu()">About</a></li>
+    </ul>
+    <a href="#" class="nav-mobile-cta-link" onclick="closeMenu()">Gespräch buchen</a>
+    <div class="nav-mobile-gold"></div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -1451,6 +1707,20 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
 
     // Hero load animation
     document.getElementById('heroBg').classList.add('loaded');
