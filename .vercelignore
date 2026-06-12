@@ -1,0 +1,12 @@
+node_modules/
+Assets/Videos/
+!Assets/Videos/waterfall-web.mp4
+Assets/Bestehende Webseite/
+Assets/Input/
+Assets/Stylereferenzen/
+tools/
+export-pdf.js
+*.pdf
+preview-full.png
+_preview_*
+.claude/

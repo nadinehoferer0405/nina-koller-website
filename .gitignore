@@ -1,16 +1,18 @@
 node_modules/
 *.pdf
-*.png
 *.jpg.tmp
 _preview_*
 preview-full.png
-Assets/Videos/
+Assets/Videos/*.mp4
+!Assets/Videos/waterfall-web.mp4
 Assets/Bestehende Webseite/
 Assets/Input/
 tools/ffmpeg
+tools/ffmpeg.zip
 tools/ffmpeg-*
 tools/screenshots/
 .DS_Store
 **/.DS_Store
 .claude/
 nina-koller-vorschau.pdf
+.vercel
