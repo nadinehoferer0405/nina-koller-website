@@ -90,7 +90,7 @@
     }
     .nav-logo {
       display: block;
-      height: 360px;
+      height: 420px;
       width: auto;
       flex-shrink: 0;
     }
@@ -228,7 +228,7 @@
     /* ─── STATEMENT STRIP ─────────────────────────────── */
     .statement {
       background: var(--dark);
-      padding: 80px var(--pad);
+      padding: 180px var(--pad);
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -254,7 +254,7 @@
     /* ─── SEHNSUCHT ───────────────────────────────────── */
     .sehnsucht {
       background: var(--warm-white);
-      padding: 120px var(--pad);
+      padding: 180px var(--pad);
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
@@ -307,13 +307,14 @@
       line-height: 1.9;
       color: var(--text-dark);
       margin-bottom: 16px;
+      text-align: justify;
     }
     .body-text + .body-text { margin-bottom: 36px; }
 
     /* ─── ANGEBOTE ────────────────────────────────────── */
     .angebote {
       background: var(--cream);
-      padding: 120px var(--pad);
+      padding: 180px var(--pad);
     }
     .section-header {
       text-align: center;
@@ -433,7 +434,7 @@
     /* ─── VERKÖRPERUNG ────────────────────────────────── */
     .verkoerperung {
       background: var(--dark);
-      padding: 220px var(--pad);
+      padding: 180px var(--pad);
       position: relative;
       overflow: hidden;
     }
@@ -487,7 +488,7 @@
     /* ─── DER WEG ─────────────────────────────────────── */
     .der-weg {
       background: var(--cream);
-      padding: 100px var(--pad);
+      padding: 180px var(--pad);
       text-align: center;
     }
     .weg-phasen {
@@ -617,7 +618,7 @@
     /* ─── GRUNDSÄTZE ──────────────────────────────────── */
     .grundsaetze {
       background: var(--warm-white);
-      padding: 120px var(--pad);
+      padding: 180px var(--pad);
     }
     .grundsaetze-grid {
       display: grid;
@@ -726,7 +727,7 @@
     }
     .ueber-content {
       background: var(--cream);
-      padding: 80px clamp(48px, 7vw, 96px);
+      padding: 120px clamp(48px, 7vw, 96px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -764,8 +765,8 @@
 
     /* ─── RÄUME ───────────────────────────────────────── */
     .raeume {
-      background: var(--dark);
-      padding: 120px var(--pad);
+      background: var(--deep);
+      padding: 180px var(--pad);
     }
     .raeume-grid {
       display: grid;
@@ -827,17 +828,17 @@
     .cta-section {
       position: relative;
       overflow: hidden;
-      padding: 140px var(--pad);
+      padding: 180px var(--pad);
       background: var(--deep);
       text-align: center;
     }
     .cta-bg {
       position: absolute;
       inset: 0;
-      background-image: url('Assets/Images/verkoerperung-bg.jpg');
+      background-image: url('Assets/Images/cta-bg.jpg');
       background-size: cover;
-      background-position: center;
-      opacity: 0.12;
+      background-position: center 10%;
+      opacity: 0.18;
     }
     .cta-content { position: relative; z-index: 2; }
     .cta-title {
@@ -869,7 +870,7 @@
     /* ─── NEWSLETTER ──────────────────────────────────── */
     .newsletter {
       background: var(--gold-pale);
-      padding: 100px var(--pad);
+      padding: 180px var(--pad);
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
@@ -1064,7 +1065,7 @@
   </div>
 
   <!-- SEHNSUCHT -->
-  <section class="sehnsucht" style="grid-template-columns:1fr 1fr;max-width:none;padding:160px max(80px,20vw);gap:120px;">
+  <section class="sehnsucht" style="grid-template-columns:1fr 1fr;max-width:none;padding:180px max(80px,20vw);gap:120px;">
     <div class="sehnsucht-content fade-up">
       <div class="eyebrow">
         <div class="eyebrow-line"></div>
@@ -1313,14 +1314,9 @@
         <span class="ueber-role">VITA™-Coach</span>
       </div>
       <p class="body-text" style="margin-bottom:36px">
-        Ich kenne das Leben zwischen Leistung und innerer Distanz. Die Rückkehr in meinen Körper veränderte meine Identität grundlegend.
+        Ich kenne das Leben zwischen Leistung und innerer Distanz. Die Rückkehr in meinen Körper veränderte meine Identität grundlegend. Heute stehe ich für verkörperte, inspirierende Sinnlichkeit und halte Räume, in denen Frauen sich erinnern.
       </p>
-      <div class="ueber-values">
-        <span class="ueber-value">Verkörperung</span>
-        <span class="ueber-value">Sinnlichkeit</span>
-        <span class="ueber-value">Initiation</span>
-      </div>
-      <a href="#" class="btn btn-dark" style="margin-top:32px">Erfahre mehr über mich</a>
+      <a href="#" class="btn btn-dark" style="margin-top:32px;align-self:flex-start">Erfahre mehr über mich</a>
     </div>
   </section>
 
@@ -1331,6 +1327,12 @@
       <h2 class="section-title" style="color:var(--gold-pale);font-size:clamp(2rem,4vw,3.2rem)">
         Räume der <em>Erinnerung</em>
       </h2>
+      <p class="body-text" style="color:rgba(255,255,255,0.65);max-width:960px;margin:80px auto 0;text-align:justify;line-height:2">
+        Neben The INITIATION – Embodied Woman Journey entstehen weitere Räume, in denen Frauen sich begegnen und erinnern.
+      </p>
+      <p class="body-text" style="color:rgba(255,255,255,0.65);max-width:960px;margin:24px auto 100px;text-align:justify;line-height:2">
+        Die FEMM Retreats öffnen Schwellen in der Natur, in der Einfachheit liegt hier der Luxus. Embodiment Deep Dives, Online und in Person in Zürich schaffen konzentrierte Momente der Klarheit und Verkörperung. Im Embodied Woman Circle verbindet sich Gemeinschaft mit sanfter Aktivierung. In der Stille des Tessins wächst ein archaischer Raum: The Remembering – eine private Immersion für Frauen, die eine verdichtete Schwelle betreten wollen. Hier trifft Natur auf Präsenz, Erdung auf innere Krönung.
+      </p>
     </div>
     <div class="raeume-grid fade-up">
       <div class="raum-item">
