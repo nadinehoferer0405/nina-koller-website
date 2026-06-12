@@ -348,12 +348,11 @@
       inset: 0;
       background-size: cover;
       background-position: center;
-      transition: transform 0.8s ease, filter 0.5s ease;
+      transition: transform 0.8s ease;
       filter: brightness(0.82);
     }
     .angebot-card:hover .angebot-card-img {
       transform: scale(1.05);
-      filter: brightness(0.52);
     }
     .angebot-card-content {
       position: absolute;
@@ -366,14 +365,6 @@
         rgba(13,11,10,0.88) 0%,
         rgba(13,11,10,0.28) 38%,
         transparent 60%
-      );
-      transition: background 0.5s ease;
-    }
-    .angebot-card:hover .angebot-card-content {
-      background: linear-gradient(to top,
-        rgba(13,11,10,0.92) 0%,
-        rgba(13,11,10,0.5) 50%,
-        rgba(13,11,10,0.08) 75%
       );
     }
     .angebot-tag {
@@ -403,15 +394,6 @@
       font-weight: 300;
       color: rgba(255,255,255,0.7);
       line-height: 1.75;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: max-height 0.45s ease, opacity 0.35s ease, margin 0.35s ease;
-      margin-top: 0;
-    }
-    .angebot-card:hover .angebot-desc {
-      max-height: 130px;
-      opacity: 1;
       margin-top: 14px;
     }
     .angebot-link {
@@ -428,7 +410,6 @@
       transition: gap 0.25s;
     }
     .angebot-link::after { content: '→'; font-size: 1rem; transition: transform 0.25s; }
-    .angebot-card:hover .angebot-link { gap: 16px; }
     .angebot-card:hover .angebot-link::after { transform: translateX(4px); }
 
     /* ─── VERKÖRPERUNG ────────────────────────────────── */
